@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 //九州地方の県庁所在地を調べるためのMap
 public class Main {
@@ -23,15 +24,26 @@ public class Main {
         System.out.println("九州地方の県名をローマ字でいれてください　例：Fukuoka");
         String name = new java.util.Scanner(System.in).nextLine();
 
-        String result;
-        result = Japan.get(name);
+//        String result;
+//        result = Japan.get(name);
+
+        //上の文に対するアドバイス：宣言と初期化は一緒でよいのでは。
+        String result = Japan.get(name);
 
         try {
-            if (result != null) {
-                System.out.println("県庁所在地は" + result + "です。");
-            } else {
+//            if (result != null) {
+//                System.out.println("県庁所在地は" + result + "です。");
+//            } else {
+//                throw new Exception();
+//            }
+
+            //上の文に対するアドバイス：isNull()を使ったほうが見やすい！
+            if (Objects.isNull(result)) {
                 throw new Exception();
+            } else {
+                System.out.println("県庁所在地は" + result + "です。");
             }
+
         } catch (Exception e) {
             System.out.println(name + "は見つかりませんでした");
         } finally {
